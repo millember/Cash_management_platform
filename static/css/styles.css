@@ -1,0 +1,45 @@
+/* Основные стили */
+body {
+    padding-top: 20px;
+    background-color: #f8f9fa;
+}
+
+.card {
+    margin-bottom: 20px;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+/* Формы */
+.form-control, .form-select {
+    margin-bottom: 10px;
+}
+
+/* Навигация */
+.nav-tabs {
+    margin-bottom: 20px;
+}
+
+/* Ошибки */
+.invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto;
+    }
+}

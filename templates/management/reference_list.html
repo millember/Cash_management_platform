@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Управление справочниками</h2>
+    </div>
+    <div class="card-body">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="status-tab" data-bs-toggle="tab" data-bs-target="#status" type="button" role="tab">Статусы</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="type-tab" data-bs-toggle="tab" data-bs-target="#type" type="button" role="tab">Типы</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="category-tab" data-bs-toggle="tab" data-bs-target="#category" type="button" role="tab">Категории</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="subcategory-tab" data-bs-toggle="tab" data-bs-target="#subcategory" type="button" role="tab">Подкатегории</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <!-- Статусы -->
+            <div class="tab-pane fade show active" id="status" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-3 mt-3">
+                    <h4>Статусы</h4>
+                    <a href="{% url 'management:status-create' %}" class="btn btn-sm btn-primary">Добавить статус</a>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for status in statuses %}
+                        <tr>
+                            <td>{{ status.name }}</td>
+                            <td>
+                                <a href="{% url 'management:status-update' status.pk %}" class="btn btn-sm btn-outline-primary">Изменить</a>
+                                <a href="{% url 'management:status-delete' status.pk %}" class="btn btn-sm btn-outline-danger">Удалить</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="2">Нет данных</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Типы -->
+            <div class="tab-pane fade" id="type" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-3 mt-3">
+                    <h4>Типы операций</h4>
+                    <a href="{% url 'management:type-create' %}" class="btn btn-sm btn-primary">Добавить тип</a>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for type in types %}
+                        <tr>
+                            <td>{{ type.name }}</td>
+                            <td>
+                                <a href="{% url 'management:type-update' type.pk %}" class="btn btn-sm btn-outline-primary">Изменить</a>
+                                <a href="{% url 'management:type-delete' type.pk %}" class="btn btn-sm btn-outline-danger">Удалить</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="2">Нет данных</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Категории -->
+            <div class="tab-pane fade" id="category" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-3 mt-3">
+                    <h4>Категории</h4>
+                    <a href="{% url 'management:category-create' %}" class="btn btn-sm btn-primary">Добавить категорию</a>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Тип</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for category in categories %}
+                        <tr>
+                            <td>{{ category.name }}</td>
+                            <td>{{ category.type }}</td>
+                            <td>
+                                <a href="{% url 'management:category-update' category.pk %}" class="btn btn-sm btn-outline-primary">Изменить</a>
+                                <a href="{% url 'management:category-delete' category.pk %}" class="btn btn-sm btn-outline-danger">Удалить</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3">Нет данных</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Подкатегории -->
+            <div class="tab-pane fade" id="subcategory" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-3 mt-3">
+                    <h4>Подкатегории</h4>
+                    <a href="{% url 'management:subcategory-create' %}" class="btn btn-sm btn-primary">Добавить подкатегорию</a>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Категория</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for subcategory in subcategories %}
+                        <tr>
+                            <td>{{ subcategory.name }}</td>
+                            <td>{{ subcategory.category }}</td>
+                            <td>
+                                <a href="{% url 'management:subcategory-update' subcategory.pk %}" class="btn btn-sm btn-outline-primary">Изменить</a>
+                                <a href="{% url 'management:subcategory-delete' subcategory.pk %}" class="btn btn-sm btn-outline-danger">Удалить</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3">Нет данных</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
