@@ -1,5 +1,5 @@
 1. Клонировать репозиторий:
-git clone https://github.com/yourusername/cash-management-platform.git](https://github.com/millember/Cash_management_platform.git
+git clone https://github.com/millember/Cash_management_platform.git
 2. Создать и активировать виртуальное окружение:
 python -m venv venv
 Linux/Mac:
