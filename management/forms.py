@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 
 from .models import MoneyMovement, Status, Type, Category, SubCategory
 import logging
-from services import MovementValidationRules
+from .services import MovementValidationRules
 
 logger = logging.getLogger(__name__)
 
